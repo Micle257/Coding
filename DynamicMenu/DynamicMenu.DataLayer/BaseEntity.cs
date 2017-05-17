@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.Data
+namespace DynamicMenu.DataLayer
 {
     using System;
     using System.ComponentModel.DataAnnotations;

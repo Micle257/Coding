@@ -4,13 +4,12 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataAccess
+namespace DynamicMenu.DataLayer
 {
     using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Data;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Represents a database context for this application. </summary>

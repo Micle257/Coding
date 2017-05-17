@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.Data
+namespace DynamicMenu.DataLayer
 {
     /// <summary> Represents a entity for dynamic menu. </summary>
     public class Menu : BaseEntity
