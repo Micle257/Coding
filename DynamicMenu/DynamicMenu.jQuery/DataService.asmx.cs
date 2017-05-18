@@ -27,10 +27,13 @@ namespace DynamicMenu.jQuery
         [WebMethod]
         public string GetMenus()
         {
-            using (var db = new Context())
+            using (var bc = new BussinesContext())
             {
-                var data = db.Menus.ToList();
-                return JsonHelpers.Serialize(data);
+               var c = bc.AddMenu("New category", MenuHierarchyLevel.Root, null);
+                bc.AddMenu("Sub category", MenuHierarchyLevel.TopCategory,c);
+                bc.AddMenu("Root category", MenuHierarchyLevel.Root, null);
+                var menus = bc.DataContext.Menus?.ToList();
+                return JsonHelpers.Serialize(menus);
             }
         }
     }

@@ -32,6 +32,7 @@ namespace DynamicMenu.DataLayer
 
         /// <summary> Gets the data context. </summary>
         /// <value> The <see cref="DataContext" />. </value>
+        [NotNull]
         public DataContext DataContext => _context;
 
         /// <inheritdoc />
