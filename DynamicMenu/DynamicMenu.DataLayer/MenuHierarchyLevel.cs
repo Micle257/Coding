@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-//  <copyright file="MenuHierarchyLevel.cs" company="The Pentagon">
+//  <copyright file="MenuHierarchyLevel.cs">
 //   Copyright (c) Michal Pokorný. All Rights Reserved.
 //  </copyright>
 // -----------------------------------------------------------------------

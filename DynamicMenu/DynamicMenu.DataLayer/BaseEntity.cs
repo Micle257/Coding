@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-//  <copyright file="BaseEntity.cs" company="The Pentagon">
+//  <copyright file="BaseEntity.cs">
 //   Copyright (c) Michal Pokorný. All Rights Reserved.
 //  </copyright>
 // -----------------------------------------------------------------------
@@ -19,7 +19,7 @@ namespace DynamicMenu.DataLayer
 
         /// <summary> Gets or sets the created time. </summary>
         /// <value> The <see cref="DateTimeOffset" />. </value>
-        public DateTimeOffset Created { get; set; }
+        public DateTimeOffset CreatedAt { get; set; }
 
         /// <summary> Gets or sets the last updated time. </summary>
         /// <value> The <see cref="DateTimeOffset" />. </value>

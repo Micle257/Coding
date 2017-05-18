@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------
-//  <copyright file="Context.cs" company="The Pentagon">
+//  <copyright file="DataContext.cs">
 //   Copyright (c) Michal Pokorný. All Rights Reserved.
 //  </copyright>
 // -----------------------------------------------------------------------
@@ -13,8 +13,15 @@ namespace DynamicMenu.DataLayer
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Represents a database context for this application. </summary>
-    public class Context : DbContext
+    public class DataContext : DbContext
     {
+        /// <summary> Initializes a new instance of the <see cref="DataContext" /> class. </summary>
+        public DataContext() { }
+
+        /// <summary> Initializes a new instance of the <see cref="DataContext" /> class with context options. </summary>
+        /// <param name="contextOptions"> The context options. </param>
+        public DataContext(DbContextOptions<DataContext> contextOptions) : base(contextOptions) { }
+
         /// <summary> Gets or sets the menu database table. </summary>
         /// <value> The <see cref="DbSet{Menu}" />. </value>
         public DbSet<Menu> Menus { get; set; }
@@ -46,7 +53,7 @@ namespace DynamicMenu.DataLayer
             {
                 var entity = (BaseEntity) entry.Entity;
                 if (entry.State == EntityState.Added)
-                    entity.Created = DateTimeOffset.UtcNow;
+                    entity.CreatedAt = DateTimeOffset.UtcNow;
                 entity.LastUpdated = DateTimeOffset.UtcNow;
             }
         }
