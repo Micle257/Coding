@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.4
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.jQuery", "DynamicMenu.jQuery\DynamicMenu.jQuery.csproj", "{94300A0E-058E-4CD8-92DB-B6408EF2DC5F}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{46578047-2AAF-43C3-B431-780EAD25E90B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.DataLayer.Tests", "DynamicMenu.DataLayer.Tests\DynamicMenu.DataLayer.Tests.csproj", "{40F5E461-A102-4712-81BA-29A50F23FC40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.Web", "DynamicMenu.Web\DynamicMenu.Web.csproj", "{A2E8BB5E-9A09-4E7F-973D-040EF416E26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{40F5E461-A102-4712-81BA-29A50F23FC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40F5E461-A102-4712-81BA-29A50F23FC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40F5E461-A102-4712-81BA-29A50F23FC40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E8BB5E-9A09-4E7F-973D-040EF416E26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E8BB5E-9A09-4E7F-973D-040EF416E26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E8BB5E-9A09-4E7F-973D-040EF416E26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E8BB5E-9A09-4E7F-973D-040EF416E26D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
