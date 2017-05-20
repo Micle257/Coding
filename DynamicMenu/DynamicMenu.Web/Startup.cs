@@ -10,6 +10,10 @@ using Microsoft.Extensions.Logging;
 
 namespace DynamicMenu.Web
 {
+    using DataLayer;
+    using JetBrains.Annotations;
+    using Microsoft.EntityFrameworkCore;
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -22,13 +26,20 @@ namespace DynamicMenu.Web
             Configuration = builder.Build();
         }
 
+        [NotNull]
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices([NotNull] IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
+
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            if (connectionString == null)
+                throw new ArgumentException("The appsettings.json doesn't contain the default connection string");
+
+            services.AddDbContext<DataContext>(options => options?.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
