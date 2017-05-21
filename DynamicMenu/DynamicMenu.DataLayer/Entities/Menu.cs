@@ -17,6 +17,14 @@ namespace DynamicMenu.DataLayer
         /// <value> The <see cref="Menu" />. </value>
         public virtual Menu ParentMenu { get; set; }
 
+        /// <summary>
+        /// Gets or sets the parent menu identifier.
+        /// </summary>
+        /// <value>
+        /// The <see cref="Int32"/>.
+        /// </value>
+        public int ParentMenuId { get; set;  }
+
         /// <summary> Gets or sets the slug identifier of the menu. </summary>
         /// <value> The <see cref="string" />. </value>
         [Required]
@@ -29,7 +37,7 @@ namespace DynamicMenu.DataLayer
         /// <summary> Gets or sets a value indicating whether this menu is enabled. </summary>
         /// <value>
         ///     <c> true </c> if this instance is enabled; otherwise, <c> false </c>. </value>
-        public bool IsEnabled { get; set; }
+        public bool IsEnabled { get; set; } = true;
 
         /// <summary> Gets or sets the menu's hierarchy level. </summary>
         /// <value> The <see cref="MenuHierarchyLevel" />. </value>
