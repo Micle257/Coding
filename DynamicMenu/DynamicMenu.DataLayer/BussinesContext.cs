@@ -7,6 +7,10 @@
 namespace DynamicMenu.DataLayer
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Extensions;
     using JetBrains.Annotations;
     using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +22,10 @@ namespace DynamicMenu.DataLayer
         readonly DataContext _context;
 
         /// <summary> Initializes a new instance of the <see cref="BussinesContext" /> class with default context settings. </summary>
-        public BussinesContext()
-            : this(@"Data Source=PENTAGON\SQLEXPRESS;Initial Catalog=dynamicmenudata;Integrated Security=True;Pooling=False") { }
+        public BussinesContext(DataContext context)
+        {
+            _context = context;
+        }
 
         /// <summary> Initializes a new instance of the <see cref="BussinesContext" /> class with sql connection string. </summary>
         /// <param name="connectionString"> The connection string. </param>
@@ -59,18 +65,74 @@ namespace DynamicMenu.DataLayer
                 throw new ArgumentException("Menu with no parent menu must be in root category");
 
             var menu = new Menu
-                       {
-                           DisplayName = name,
-                           IsEnabled = isEnabled,
-                           ParentMenu = parent,
-                           MenuHierarchyLevel = hierarchyLevel
-                       };
+            {
+                DisplayName = name,
+                IsEnabled = isEnabled,
+                ParentMenu = parent,
+                MenuHierarchyLevel = hierarchyLevel
+            };
             menu.GenerateSlug();
 
             _context.Menus.Add(menu);
             _context.SaveChanges();
 
             return menu;
+        }
+
+        /// <summary>
+        /// Gets the menus from the data context through Stored Procedure.
+        /// </summary>
+        /// <returns>
+        /// An <see cref="IList{Menu}"/>.
+        /// </returns>
+        public IList<Menu> GetMenus()
+        {
+            var menus = _context.ExecuteStoredProcedure<Menu>("[dbo].[spGetMenuData]");
+            //  var menus = await _context.Menus.ToListAsync().ConfigureAwait(false);
+            return menus;
+        }
+
+        /// <summary>
+        /// Gets the categories.
+        /// </summary>
+        /// <param name="menus">The menus.</param>
+        /// <returns>
+        /// An <see cref="IList{Category}" />.
+        /// </returns>
+        public IList<Category> GetCategories(IList<Menu> menus)
+        {
+            var rootMenus = new List<Menu>();
+            var topMenus = new List<Menu>();
+            var headMenus = new List<Menu>();
+            foreach (var menu in menus)
+            {
+                switch (menu.MenuHierarchyLevel)
+                {
+                    case MenuHierarchyLevel.Root:
+                        rootMenus.Add(menu);
+                        break;
+                    case MenuHierarchyLevel.TopCategory:
+                        topMenus.Add(menu);
+                        break;
+                    case MenuHierarchyLevel.Category:
+                        headMenus.Add(menu);
+                        break;
+                }
+            }
+            var categories = headMenus.Select(menu => new Category {Menu = menu}).ToList();
+
+            foreach (var topMenu in topMenus)
+            {
+                var children = categories.Where(c => c.Menu.ParentMenuId == topMenu.Id).ToList();
+                categories.Add(new Category {Children = children, Menu = topMenu});
+            }
+            foreach (var rootMenu in rootMenus)
+            {
+                var children = categories.Where(c => c.Menu.ParentMenuId == rootMenu.Id).ToList();
+                categories.Add(new Category { Children = children, Menu = rootMenu });
+            }
+
+            return categories;
         }
 
         /// <summary> Releases unmanaged and - optionally - managed resources. </summary>
@@ -80,6 +142,7 @@ namespace DynamicMenu.DataLayer
             if (!disposing)
                 return;
 
+            if (_context != null)
             _context.Dispose();
         }
     }
