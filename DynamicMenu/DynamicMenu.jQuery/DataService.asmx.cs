@@ -27,7 +27,7 @@ namespace DynamicMenu.jQuery
         [WebMethod]
         public string GetMenus()
         {
-            using (var bc = new BussinesContext())
+            using (var bc = new BussinesContext(default(DataContext)))
             {
                var c = bc.AddMenu("New category", MenuHierarchyLevel.Root, null);
                 bc.AddMenu("Sub category", MenuHierarchyLevel.TopCategory,c);
