@@ -1,10 +1,11 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+﻿@using DynamicMenu.Web.Controllers
+@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DynamicMenu.Web</title>
+    <title>@ViewData["Title"] - DynamicMenu</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -19,7 +20,9 @@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
-@Html.Partial("_Nav");
+@Html.RenderAction("Menu", "Home")
+    
+@Html.Partial("_Nav")
 
 <div class="container body-content">
     @RenderBody()
