@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.DataLayer.Entities
 {
     using System;
     using System.ComponentModel.DataAnnotations;
@@ -17,13 +17,9 @@ namespace DynamicMenu.DataLayer
         /// <value> The <see cref="Menu" />. </value>
         public virtual Menu ParentMenu { get; set; }
 
-        /// <summary>
-        /// Gets or sets the parent menu identifier.
-        /// </summary>
-        /// <value>
-        /// The <see cref="Int32"/>.
-        /// </value>
-        public int ParentMenuId { get; set;  }
+        /// <summary> Gets or sets the parent menu identifier. </summary>
+        /// <value> The <see cref="int" />. </value>
+        public int ParentMenuId { get; set; }
 
         /// <summary> Gets or sets the slug identifier of the menu. </summary>
         /// <value> The <see cref="string" />. </value>

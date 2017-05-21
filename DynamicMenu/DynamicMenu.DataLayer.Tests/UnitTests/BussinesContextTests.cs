@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// -----------------------------------------------------------------------
+//  <copyright file="BussinesContextTests.cs">
+//   Copyright (c) Michal Pokorný. All Rights Reserved.
+//  </copyright>
+// -----------------------------------------------------------------------
 
 namespace DynamicMenu.DataLayer.Tests.UnitTests
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Entities;
     using Xunit;
 
     public class BussinesContextTests
@@ -14,16 +17,16 @@ namespace DynamicMenu.DataLayer.Tests.UnitTests
         public void ShouldGetCategories()
         {
             var menu0 = new Menu
-                       {
-                           MenuHierarchyLevel = MenuHierarchyLevel.Root,
-                           Id = 0
-                       };
+                        {
+                            MenuHierarchyLevel = MenuHierarchyLevel.Root,
+                            Id = 0
+                        };
             var menu2 = new Menu
-                       {
-                           MenuHierarchyLevel = MenuHierarchyLevel.TopCategory,
-                           Id = 2,
-                           ParentMenu = menu0
-                       };
+                        {
+                            MenuHierarchyLevel = MenuHierarchyLevel.TopCategory,
+                            Id = 2,
+                            ParentMenu = menu0
+                        };
             var menus = new List<Menu>
                         {
                             menu0,

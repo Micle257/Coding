@@ -18,19 +18,15 @@ namespace DynamicMenu.jQuery
     [ScriptService]
     public class DataService : WebService
     {
-        /// <summary>
-        /// Gets the menus entities from data context and converts them into JSON.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="string"/> in JSON.
-        /// </returns>
+        /// <summary> Gets the menus entities from data context and converts them into JSON. </summary>
+        /// <returns> A <see cref="string" /> in JSON. </returns>
         [WebMethod]
         public string GetMenus()
         {
             using (var bc = new BussinesContext(default(DataContext)))
             {
-               var c = bc.AddMenu("New category", MenuHierarchyLevel.Root, null);
-                bc.AddMenu("Sub category", MenuHierarchyLevel.TopCategory,c);
+                var c = bc.AddMenu("New category", MenuHierarchyLevel.Root, null);
+                bc.AddMenu("Sub category", MenuHierarchyLevel.TopCategory, c);
                 bc.AddMenu("Root category", MenuHierarchyLevel.Root, null);
                 var menus = bc.DataContext.Menus?.ToList();
                 return JsonHelpers.Serialize(menus);

@@ -9,7 +9,7 @@ namespace DynamicMenu.DataLayer
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
+    using Entities;
     using Extensions;
     using JetBrains.Annotations;
     using Microsoft.EntityFrameworkCore;
@@ -18,7 +18,6 @@ namespace DynamicMenu.DataLayer
     public class BussinesContext : IDisposable
     {
         /// <summary> The database context. </summary>
-        [NotNull]
         readonly DataContext _context;
 
         /// <summary> Initializes a new instance of the <see cref="BussinesContext" /> class with default context settings. </summary>
@@ -38,7 +37,6 @@ namespace DynamicMenu.DataLayer
 
         /// <summary> Gets the data context. </summary>
         /// <value> The <see cref="DataContext" />. </value>
-        [NotNull]
         public DataContext DataContext => _context;
 
         /// <inheritdoc />
@@ -65,12 +63,12 @@ namespace DynamicMenu.DataLayer
                 throw new ArgumentException("Menu with no parent menu must be in root category");
 
             var menu = new Menu
-            {
-                DisplayName = name,
-                IsEnabled = isEnabled,
-                ParentMenu = parent,
-                MenuHierarchyLevel = hierarchyLevel
-            };
+                       {
+                           DisplayName = name,
+                           IsEnabled = isEnabled,
+                           ParentMenu = parent,
+                           MenuHierarchyLevel = hierarchyLevel
+                       };
             menu.GenerateSlug();
 
             _context.Menus.Add(menu);
@@ -79,12 +77,8 @@ namespace DynamicMenu.DataLayer
             return menu;
         }
 
-        /// <summary>
-        /// Gets the menus from the data context through Stored Procedure.
-        /// </summary>
-        /// <returns>
-        /// An <see cref="IList{Menu}"/>.
-        /// </returns>
+        /// <summary> Gets the menus from the data context through Stored Procedure. </summary>
+        /// <returns> An <see cref="IList{Menu}" />. </returns>
         public IList<Menu> GetMenus()
         {
             var menus = _context.ExecuteStoredProcedure<Menu>("[dbo].[spGetMenuData]");
@@ -92,13 +86,9 @@ namespace DynamicMenu.DataLayer
             return menus;
         }
 
-        /// <summary>
-        /// Gets the categories.
-        /// </summary>
-        /// <param name="menus">The menus.</param>
-        /// <returns>
-        /// An <see cref="IList{Category}" />.
-        /// </returns>
+        /// <summary> Gets the categories. </summary>
+        /// <param name="menus"> The menus. </param>
+        /// <returns> An <see cref="IList{Category}" />. </returns>
         public IList<Category> GetCategories(IList<Menu> menus)
         {
             var rootMenus = new List<Menu>();
@@ -129,7 +119,7 @@ namespace DynamicMenu.DataLayer
             foreach (var rootMenu in rootMenus)
             {
                 var children = categories.Where(c => c.Menu.ParentMenuId == rootMenu.Id).ToList();
-                categories.Add(new Category { Children = children, Menu = rootMenu });
+                categories.Add(new Category {Children = children, Menu = rootMenu});
             }
 
             return categories;
@@ -143,7 +133,7 @@ namespace DynamicMenu.DataLayer
                 return;
 
             if (_context != null)
-            _context.Dispose();
+                _context.Dispose();
         }
     }
 }

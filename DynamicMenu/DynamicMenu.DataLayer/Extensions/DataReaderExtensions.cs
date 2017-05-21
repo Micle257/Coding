@@ -1,12 +1,17 @@
-namespace DynamicMenu.DataLayer.Extensions {
+// -----------------------------------------------------------------------
+//  <copyright file="DataReaderExtensions.cs">
+//   Copyright (c) Michal Pokorný. All Rights Reserved.
+//  </copyright>
+// -----------------------------------------------------------------------
+
+namespace DynamicMenu.DataLayer.Extensions
+{
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Reflection;
 
-    /// <summary>
-    /// Contains extension methods for <see cref="IDataReader" />.
-    /// </summary>
+    /// <summary> Contains extension methods for <see cref="IDataReader" />. </summary>
     public static class DataReaderExtensions
     {
         internal static IList<T> MapModel<T>(this IDataReader reader)
@@ -17,7 +22,7 @@ namespace DynamicMenu.DataLayer.Extensions {
             while (reader.Read())
             {
                 var row = new T();
-                for (int i = 0; i < reader.FieldCount; i++)
+                for (var i = 0; i < reader.FieldCount; i++)
                 {
                     var name = reader.GetName(i);
                     if (properties.TryGetValue(name, out PropertyInfo property))
@@ -33,9 +38,9 @@ namespace DynamicMenu.DataLayer.Extensions {
 
         static IDictionary<string, PropertyInfo> GetColumns<T>(this IDataReader reader)
         {
-            var result = new Dictionary<string,PropertyInfo>();
+            var result = new Dictionary<string, PropertyInfo>();
             var type = typeof(T);
-            for (int i = 0; i < reader.FieldCount; i++)
+            for (var i = 0; i < reader.FieldCount; i++)
             {
                 var name = reader.GetName(i);
                 var fixedName = name.Replace("-", string.Empty).Replace("_", string.Empty);

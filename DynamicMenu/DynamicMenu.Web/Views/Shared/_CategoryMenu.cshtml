@@ -1,4 +1,5 @@
 @model DynamicMenu.Web.ViewModels.MenusViewModel
+<style type="text/css">.category-topmenu-header { font-weight: bold}</style>
 <script>
     $(function() {
         $('[data-toggle="popover"]').popover({
@@ -15,16 +16,22 @@
     <ul class="nav navbar-nav">
         @foreach (var rootCat in Model.Categories)
         {
-            <li><a data-toggle="popover">@rootCat.Title</a></li>
+            <li>
+                <a data-toggle="popover">@rootCat.Title</a>
+            </li>
             <div id="category-content" style="display: block">
                 @foreach (var topCategory in rootCat.Children)
                 {
                     <div>
                         <ul>
-                            <li class="category-topmenu-header"><a href="/@topCategory.Menu.Slug">@topCategory.Title</a></li>
+                            <li class="category-topmenu-header">
+                                <a href="/@topCategory.Menu.Slug">@topCategory.Title</a>
+                            </li>
                             @foreach (var category in topCategory.Children)
                             {
-                                <li><a href="/@category.Menu.Slug">@category.Title</a></li>
+                                <li>
+                                    <a href="/@category.Menu.Slug">@category.Title</a>
+                                </li>
                             }
                         </ul>
                     </div>
@@ -33,4 +40,3 @@
         }
     </ul>
 </div>
-
