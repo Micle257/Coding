@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer.Entities
+namespace DynamicMenu.Core.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;

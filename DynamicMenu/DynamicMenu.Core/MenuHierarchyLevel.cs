@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Core
 {
     /// <summary> Specifies a hierarchy level of navigation menu. </summary>
     public enum MenuHierarchyLevel

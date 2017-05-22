@@ -4,10 +4,9 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Core.Models
 {
     using System.Collections.Generic;
-    using Entities;
 
     /// <summary> Represents a data model for category. </summary>
     class Category

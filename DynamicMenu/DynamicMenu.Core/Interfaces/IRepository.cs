@@ -4,12 +4,12 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Core.Interfaces
 {
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
-    using Entities;
+    using Models;
 
     /// <summary> Represents the CRUD operation provider, which won't commit to the context. </summary>
     /// <typeparam name="T"> The type of the entity. </typeparam>
