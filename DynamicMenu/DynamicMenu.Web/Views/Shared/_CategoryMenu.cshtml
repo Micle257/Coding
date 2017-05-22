@@ -5,24 +5,27 @@
         @foreach (var rootCat in Model.Categories)
         {
             <li class="dropdown">
-                <a data-toggle="dropdown" class="dropdown-toggle">@rootCat.Title</a>
-            </li>
-            <div class="dropdown-menu">
-                @foreach (var topCategory in rootCat.Children)
-                {
-                    <ul>
-                        <li>
-                            <a class="h4" href="/@topCategory.Menu.Slug">@topCategory.Title</a>
-                        </li>
-                        @foreach (var category in topCategory.Children)
-                        {
+                <a data-toggle="dropdown" class="dropdown-toggle">
+                    @rootCat.Title
+                    <b class="right-caret pull-right"></b>
+                </a>
+                <div class="dropdown-menu rightMenu">
+                    @foreach (var topCategory in rootCat.Children)
+                    {
+                        <ul class="list-unstyled" style="margin-bottom: 10px;">
                             <li>
-                                <a href="/@category.Menu.Slug">@category.Title</a>
+                                <a class="h4" href="/@topCategory.Menu.Slug">@topCategory.Title</a>
                             </li>
-                        }
-                    </ul>
-                }
-            </div>
+                            @foreach (var category in topCategory.Children)
+                            {
+                                <li>
+                                    <a href="/@category.Menu.Slug">@category.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </li>
         }
     </ul>
 </div>
