@@ -7,6 +7,7 @@
 namespace DynamicMenu.DataLayer.Tests.UnitTests
 {
     using System;
+    using Core.Models;
     using Xunit;
 
     public class MenuEntityTests

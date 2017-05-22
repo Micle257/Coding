@@ -6,6 +6,8 @@
 
 namespace DynamicMenu.DataLayer.Tests.FunctionalTests
 {
+    using Microsoft.EntityFrameworkCore;
+
     public class FunctionalTest
     {
         public FunctionalTest()
@@ -17,6 +19,11 @@ namespace DynamicMenu.DataLayer.Tests.FunctionalTests
             }
         }
 
-        public DataContext GetContext() => new BussinesContext(@"Data Source=PENTAGON\SQLEXPRESS;Initial Catalog=dynamicmenudatatest;Integrated Security=True;Pooling=False").DataContext;
+        public DataContext GetContext()
+        {
+            var builder = new DbContextOptionsBuilder<DataContext>();
+            builder.UseInMemoryDatabase();
+            return new DataContext(builder.Options);
+        }
     }
 }
