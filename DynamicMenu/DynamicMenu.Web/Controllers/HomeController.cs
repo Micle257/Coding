@@ -7,6 +7,7 @@
 namespace DynamicMenu.Web.Controllers
 {
     using System.Linq;
+    using Core;
     using DataLayer;
     using Microsoft.AspNetCore.Mvc;
     using ViewModels;
@@ -55,7 +56,7 @@ namespace DynamicMenu.Web.Controllers
         {
             using (var bc = new BussinesContext(DataContext))
             {
-                var categories = bc.GetCategories(bc.GetMenus());
+                var categories = CategoryHelper.GetCategories(bc.GetMenus());
                 var viewModel = new MenusViewModel {Categories = categories.Where(c => c.Menu.MenuHierarchyLevel == MenuHierarchyLevel.Root).ToList()};
                 return PartialView("_CategoryMenu", viewModel);
             }

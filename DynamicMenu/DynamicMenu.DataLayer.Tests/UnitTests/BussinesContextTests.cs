@@ -8,7 +8,6 @@ namespace DynamicMenu.DataLayer.Tests.UnitTests
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Entities;
     using Xunit;
 
     public class BussinesContextTests

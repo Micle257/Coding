@@ -10,7 +10,7 @@ namespace DynamicMenu.DataLayer
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-    using Entities;
+    using Core.Models;
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Represents a database context for this application. </summary>

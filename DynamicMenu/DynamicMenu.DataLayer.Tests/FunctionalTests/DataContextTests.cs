@@ -7,7 +7,6 @@
 namespace DynamicMenu.DataLayer.Tests.FunctionalTests
 {
     using System.Linq;
-    using Entities;
     using Xunit;
 
     public class DataContextTests : FunctionalTest

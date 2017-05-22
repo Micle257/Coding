@@ -10,7 +10,8 @@ namespace DynamicMenu.DataLayer
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
-    using Entities;
+    using Core.Interfaces;
+    using Core.Models;
     using JetBrains.Annotations;
     using Microsoft.EntityFrameworkCore;
 

@@ -27,6 +27,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DynamicMenu.Core\DynamicMenu.Core.csproj" />
     <ProjectReference Include="..\DynamicMenu.DataLayer\DynamicMenu.Infrastructure.csproj" />
   </ItemGroup>
 
