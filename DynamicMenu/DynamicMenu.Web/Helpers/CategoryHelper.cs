@@ -7,6 +7,7 @@ namespace DynamicMenu.Web.Helpers
 {
     using Core;
     using Core.Models;
+    using ViewModels;
 
     /// <summary>
     /// Provides helper methods for category logic.
@@ -14,13 +15,13 @@ namespace DynamicMenu.Web.Helpers
     public static class CategoryHelper
     {
         /// <summary>
-        /// Gets the categories.
+        /// Gets the root navigation categories.
         /// </summary>
-        /// <param name="menus">The menus.</param>
+        /// <param name="menus">The menus entities.</param>
         /// <returns>
-        /// A <see cref="List{List{Menu}}"/>.
+        /// A <see cref="List{T}"/> of root <see cref="NavigationCategoryViewModel"/>s.
         /// </returns>
-        public static List<List<Menu>> GetCategories(List<Menu> menus)
+        public static List<NavigationCategoryViewModel> GetCategories(List<Menu> menus)
         {
             var rootMenus = new List<Menu>();
             var topMenus = new List<Menu>();
