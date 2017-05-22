@@ -18,8 +18,8 @@ namespace DynamicMenu.Web.ViewModels
         /// Gets or sets the categories.
         /// </summary>
         /// <value>
-        /// The <see cref="IList{T}"/> of <see cref="Category"/>.
+        /// The <see cref="IList{T}"/> of the <see cref="NavigationCategoryViewModel"/>.
         /// </value>
-        public IList<Category> Categories { get; set; }
+        public IList<NavigationCategoryViewModel> Categories { get; set; }
     }
 }

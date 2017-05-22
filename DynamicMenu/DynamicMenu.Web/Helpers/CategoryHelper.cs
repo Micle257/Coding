@@ -21,7 +21,7 @@ namespace DynamicMenu.Web.Helpers
         /// <returns>
         /// A <see cref="List{T}"/> of root <see cref="NavigationCategoryViewModel"/>s.
         /// </returns>
-        public static List<NavigationCategoryViewModel> GetCategories(List<Menu> menus)
+        public static IList<NavigationCategoryViewModel> GetCategories(IList<Menu> menus)
         {
             var rootMenus = new List<Menu>();
             var topMenus = new List<Menu>();
@@ -41,20 +41,20 @@ namespace DynamicMenu.Web.Helpers
                         break;
                 }
             }
-            var categories = headMenus.Select(menu => new Category { Menu = menu }).ToList();
+            var categories = headMenus.Select(menu => new NavigationCategoryViewModel { Menu = menu }).ToList();
 
             foreach (var topMenu in topMenus)
             {
                 var children = categories.Where(c => c.Menu.ParentMenuId == topMenu.Id).ToList();
-                categories.Add(new Category { Children = children, Menu = topMenu });
+                categories.Add(new NavigationCategoryViewModel { Children = children, Menu = topMenu });
             }
             foreach (var rootMenu in rootMenus)
             {
                 var children = categories.Where(c => c.Menu.ParentMenuId == rootMenu.Id).ToList();
-                categories.Add(new Category { Children = children, Menu = rootMenu });
+                categories.Add(new NavigationCategoryViewModel { Children = children, Menu = rootMenu });
             }
 
-            return categories;
+            return categories.Where(c => c.Menu.MenuHierarchyLevel == MenuHierarchyLevel.Root).ToList();
         }
     }
 }
