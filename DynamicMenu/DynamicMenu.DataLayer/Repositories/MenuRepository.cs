@@ -6,7 +6,7 @@
 
 namespace DynamicMenu.DataLayer
 {
-    using Entities;
+    using Core.Models;
     using JetBrains.Annotations;
 
     /// <summary> Represents a repository for <see cref="Menu" /> entity. </summary>
