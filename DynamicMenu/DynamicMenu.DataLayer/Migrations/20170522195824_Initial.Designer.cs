@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using DynamicMenu.DataLayer;
+using DynamicMenu.Core;
 
-namespace DynamicMenu.DataLayer.Migrations
+namespace DynamicMenu.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20170521152534_AddedDefaultValueForDates")]
-    partial class AddedDefaultValueForDates
+    [Migration("20170522195824_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +18,7 @@ namespace DynamicMenu.DataLayer.Migrations
                 .HasAnnotation("ProductVersion", "1.1.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DynamicMenu.DataLayer.Menu", b =>
+            modelBuilder.Entity("DynamicMenu.Core.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -28,7 +29,7 @@ namespace DynamicMenu.DataLayer.Migrations
 
                     b.Property<bool>("IsEnabled");
 
-                    b.Property<DateTimeOffset>("LastUpdated");
+                    b.Property<DateTimeOffset>("LastUpdatedAt");
 
                     b.Property<int>("MenuHierarchyLevel");
 
@@ -44,9 +45,9 @@ namespace DynamicMenu.DataLayer.Migrations
                     b.ToTable("Menus");
                 });
 
-            modelBuilder.Entity("DynamicMenu.DataLayer.Menu", b =>
+            modelBuilder.Entity("DynamicMenu.Core.Models.Menu", b =>
                 {
-                    b.HasOne("DynamicMenu.DataLayer.Menu", "ParentMenu")
+                    b.HasOne("DynamicMenu.Core.Models.Menu", "ParentMenu")
                         .WithMany()
                         .HasForeignKey("ParentMenuId");
                 });
