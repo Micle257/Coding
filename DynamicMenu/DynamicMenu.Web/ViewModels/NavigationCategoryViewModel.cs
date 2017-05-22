@@ -27,5 +27,13 @@ namespace DynamicMenu.Web.ViewModels
         /// The <see cref="List{NavigationCategoryViewModel}"/>.
         /// </value>
         public List<NavigationCategoryViewModel> Children { get; set; }
+
+        /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        /// <value>
+        /// The <see cref="string"/>.
+        /// </value>
+        public string Title => Menu.DisplayName;
     }
 }
