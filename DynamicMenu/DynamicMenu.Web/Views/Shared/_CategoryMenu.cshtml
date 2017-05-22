@@ -1,40 +1,26 @@
 @model DynamicMenu.Web.ViewModels.MenusViewModel
-<style type="text/css">.category-topmenu-header { font-weight: bold}</style>
-<script>
-    $(function() {
-        $('[data-toggle="popover"]').popover({
-            html: true,
-            content: function() {
-                $('#category-content').css({ 'display': 'block' });
-                return $('#category-content');
-            }
-        });
-    });
-</script>
 <div class="container col-md-2">
     <h3>Kategorie</h3>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-left">
         @foreach (var rootCat in Model.Categories)
         {
-            <li>
-                <a data-toggle="popover">@rootCat.Title</a>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle">@rootCat.Title</a>
             </li>
-            <div id="category-content" style="display: block">
+            <div class="dropdown-menu">
                 @foreach (var topCategory in rootCat.Children)
                 {
-                    <div>
-                        <ul>
-                            <li class="category-topmenu-header">
-                                <a href="/@topCategory.Menu.Slug">@topCategory.Title</a>
+                    <ul>
+                        <li>
+                            <a class="h4" href="/@topCategory.Menu.Slug">@topCategory.Title</a>
+                        </li>
+                        @foreach (var category in topCategory.Children)
+                        {
+                            <li>
+                                <a href="/@category.Menu.Slug">@category.Title</a>
                             </li>
-                            @foreach (var category in topCategory.Children)
-                            {
-                                <li>
-                                    <a href="/@category.Menu.Slug">@category.Title</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                        }
+                    </ul>
                 }
             </div>
         }
