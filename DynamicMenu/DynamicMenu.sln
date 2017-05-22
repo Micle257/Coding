@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.jQuery", "DynamicMenu.jQuery\DynamicMenu.jQuery.csproj", "{94300A0E-058E-4CD8-92DB-B6408EF2DC5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.DataLayer", "DynamicMenu.DataLayer\DynamicMenu.DataLayer.csproj", "{BD8694A3-C228-40B5-B132-99504ED8DA6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicMenu.Infrastructure", "DynamicMenu.DataLayer\DynamicMenu.Infrastructure.csproj", "{BD8694A3-C228-40B5-B132-99504ED8DA6C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{46578047-2AAF-43C3-B431-780EAD25E90B}"
 EndProject

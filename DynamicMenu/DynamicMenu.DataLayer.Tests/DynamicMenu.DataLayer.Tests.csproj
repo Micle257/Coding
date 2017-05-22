@@ -220,9 +220,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DynamicMenu.DataLayer\DynamicMenu.DataLayer.csproj">
+    <ProjectReference Include="..\DynamicMenu.DataLayer\DynamicMenu.Infrastructure.csproj">
       <Project>{bd8694a3-c228-40b5-b132-99504ed8da6c}</Project>
-      <Name>DynamicMenu.DataLayer</Name>
+      <Name>DynamicMenu.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
