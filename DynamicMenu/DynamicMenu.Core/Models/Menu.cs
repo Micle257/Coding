@@ -8,6 +8,7 @@ namespace DynamicMenu.Core.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
     /// <summary> Represents a entity for dynamic menu. </summary>
@@ -15,11 +16,12 @@ namespace DynamicMenu.Core.Models
     {
         /// <summary> Gets or sets the reference to the parent menu. </summary>
         /// <value> The <see cref="Menu" />. </value>
+        [ForeignKey("ParentMenuId")]
         public virtual Menu ParentMenu { get; set; }
 
         /// <summary> Gets or sets the parent menu identifier. </summary>
         /// <value> The <see cref="int" />. </value>
-        public int ParentMenuId { get; set; }
+        public int? ParentMenuId { get; set; }
 
         /// <summary> Gets or sets the slug identifier of the menu. </summary>
         /// <value> The <see cref="string" />. </value>
