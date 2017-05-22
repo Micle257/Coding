@@ -24,9 +24,9 @@ namespace DynamicMenu.Web.Controllers
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="dataContext">The data context.</param>
-        public HomeController(IRepository<Menu> menuRepository)
+        public HomeController(DataContext dataContext)
         {
-            MenuRepository = menuRepository;
+            DataContext = dataContext;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace DynamicMenu.Web.Controllers
         /// <value>
         /// The <see cref="DataContext"/>.
         /// </value>
-        public IRepository<Menu> MenuRepository { get; }
+        public DataContext DataContext { get; }
 
         /// <summary>
         /// Defines the index action.
@@ -57,7 +57,8 @@ namespace DynamicMenu.Web.Controllers
         /// </returns>
         public IActionResult Menu()
         {
-            var menus = MenuRepository.GetAll().ToList();
+            var rep = new MenuRepository(DataContext);
+            var menus = rep.GetAll().ToList();
             var categories = CategoryHelper.GetCategories(menus);
             var viewModel = new MenusViewModel { Categories = categories };
             return PartialView("_CategoryMenu", viewModel);
