@@ -57,12 +57,10 @@ namespace DynamicMenu.Web.Controllers
         /// </returns>
         public IActionResult Menu()
         {
-            using (var bc = new BussinesContext(DataContext))
-            {
-                var categories = CategoryHelper.GetCategories(bc.GetMenus());
-                var viewModel = new MenusViewModel {Categories = categories};
-                return PartialView("_CategoryMenu", viewModel);
-            }
+            var menus = MenuRepository.GetAll().ToList();
+            var categories = CategoryHelper.GetCategories(menus);
+            var viewModel = new MenusViewModel { Categories = categories };
+            return PartialView("_CategoryMenu", viewModel);
         }
 
         /// <summary>
