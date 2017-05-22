@@ -52,7 +52,7 @@ namespace DynamicMenu.DataLayer
                 var entity = (BaseEntity) entry.Entity;
                 if (entry.State == EntityState.Added)
                     entity.CreatedAt = DateTimeOffset.UtcNow;
-                entity.LastUpdated = DateTimeOffset.UtcNow;
+                entity.LastUpdatedAt = DateTimeOffset.UtcNow;
             }
         }
     }

@@ -70,6 +70,12 @@ namespace DynamicMenu.DataLayer
         /// <inheritdoc />
         public IEnumerable<T> GetAll() => _set.ToList();
 
+        /// <inheritdoc />
+        public void Commit()
+        {
+            Context.SaveChanges();
+        }
+
         /// <summary>
         /// Releases managed resources.
         /// </summary>

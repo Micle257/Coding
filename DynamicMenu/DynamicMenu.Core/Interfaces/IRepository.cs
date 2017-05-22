@@ -45,5 +45,10 @@ namespace DynamicMenu.Core.Interfaces
         /// <summary> Marks that all entities should be selected from the db context. </summary>
         /// <returns> A <see cref="IEnumerable{T}" />. </returns>
         IEnumerable<T> GetAll();
+
+        /// <summary>
+        /// Commits the changes to the context.
+        /// </summary>
+        void Commit();
     }
 }

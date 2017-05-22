@@ -23,6 +23,6 @@ namespace DynamicMenu.Core.Models
 
         /// <summary> Gets or sets the last updated time. </summary>
         /// <value> The <see cref="DateTimeOffset" />. </value>
-        public DateTimeOffset LastUpdated { get; set; }
+        public DateTimeOffset LastUpdatedAt { get; set; }
     }
 }
