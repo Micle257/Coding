@@ -10,7 +10,7 @@ namespace DynamicMenu.DataLayer
     using Entities;
 
     /// <summary> Represents a data model for category. </summary>
-    public class Category
+    class Category
     {
         /// <summary> Gets the title. </summary>
         /// <value> The <see cref="string" />. </value>
