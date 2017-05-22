@@ -8,6 +8,8 @@ namespace DynamicMenu.Web.Controllers
 {
     using System.Linq;
     using Core;
+    using Core.Interfaces;
+    using Core.Models;
     using DataLayer;
     using Helpers;
     using Microsoft.AspNetCore.Mvc;
@@ -22,9 +24,9 @@ namespace DynamicMenu.Web.Controllers
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="dataContext">The data context.</param>
-        public HomeController(DataContext dataContext)
+        public HomeController(IRepository<Menu> menuRepository)
         {
-            DataContext = dataContext;
+            MenuRepository = menuRepository;
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace DynamicMenu.Web.Controllers
         /// <value>
         /// The <see cref="DataContext"/>.
         /// </value>
-        public DataContext DataContext { get; }
+        public IRepository<Menu> MenuRepository { get; }
 
         /// <summary>
         /// Defines the index action.
