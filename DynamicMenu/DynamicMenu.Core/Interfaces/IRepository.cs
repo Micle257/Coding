@@ -13,7 +13,7 @@ namespace DynamicMenu.Core.Interfaces
 
     /// <summary> Represents the CRUD operation provider, which won't commit to the context. </summary>
     /// <typeparam name="T"> The type of the entity. </typeparam>
-    public interface IRepository<T>
+    public interface IRepository<T> : IDisposable
         where T : BaseEntity
     {
         /// <summary> Marks specified entity, that it should be inserted into the db context. </summary>

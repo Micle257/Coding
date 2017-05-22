@@ -33,7 +33,7 @@ namespace DynamicMenu.DataLayer
 
         /// <summary> Gets the data context. </summary>
         /// <value> The <see cref="DataContext" />. </value>
-        public DataContext Context { get; }
+        protected DataContext Context { get; }
 
         /// <inheritdoc />
         public virtual void Add(T entity)
@@ -69,5 +69,23 @@ namespace DynamicMenu.DataLayer
 
         /// <inheritdoc />
         public IEnumerable<T> GetAll() => _set.ToList();
+
+        /// <summary>
+        /// Releases managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing) {
+                Context?.Dispose();
+            }
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }
