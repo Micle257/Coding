@@ -86,46 +86,7 @@ namespace DynamicMenu.DataLayer
             //  var menus = await _context.Menus.ToListAsync().ConfigureAwait(false);
             return menus;
         }
-
-        /// <summary> Gets the categories. </summary>
-        /// <param name="menus"> The menus. </param>
-        /// <returns> An <see cref="IList{Category}" />. </returns>
-        public IList<Category> GetCategories(IList<Menu> menus)
-        {
-            var rootMenus = new List<Menu>();
-            var topMenus = new List<Menu>();
-            var headMenus = new List<Menu>();
-            foreach (var menu in menus)
-            {
-                switch (menu.MenuHierarchyLevel)
-                {
-                    case MenuHierarchyLevel.Root:
-                        rootMenus.Add(menu);
-                        break;
-                    case MenuHierarchyLevel.TopCategory:
-                        topMenus.Add(menu);
-                        break;
-                    case MenuHierarchyLevel.Category:
-                        headMenus.Add(menu);
-                        break;
-                }
-            }
-            var categories = headMenus.Select(menu => new Category {Menu = menu}).ToList();
-
-            foreach (var topMenu in topMenus)
-            {
-                var children = categories.Where(c => c.Menu.ParentMenuId == topMenu.Id).ToList();
-                categories.Add(new Category {Children = children, Menu = topMenu});
-            }
-            foreach (var rootMenu in rootMenus)
-            {
-                var children = categories.Where(c => c.Menu.ParentMenuId == rootMenu.Id).ToList();
-                categories.Add(new Category {Children = children, Menu = rootMenu});
-            }
-
-            return categories;
-        }
-
+        
         /// <summary> Releases unmanaged and - optionally - managed resources. </summary>
         /// <param name="disposing"> If set to <c> true </c> perform release both managed and unmanaged resources; otherwise, release only unmanaged resources. </param>
         protected virtual void Dispose(bool disposing)
