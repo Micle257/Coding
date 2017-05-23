@@ -34,5 +34,10 @@
     <ProjectReference Include="..\DynamicMenu.Core\DynamicMenu.Core.csproj" />
     <ProjectReference Include="..\DynamicMenu.DataLayer\DynamicMenu.Infrastructure.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DynamicMenu.Infrastructure">
+      <HintPath>..\DynamicMenu.DataLayer\bin\Debug\netstandard1.4\DynamicMenu.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

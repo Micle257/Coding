@@ -7,9 +7,9 @@
 namespace DynamicMenu.Web.Controllers
 {
     using System.Linq;
-    using DataLayer;
     using Microsoft.AspNetCore.Mvc;
     using ViewModels;
+    using DynamicMenu.DataLayer;
 
     /// <summary>
     /// Represents a controller for category.
