@@ -19,20 +19,14 @@ namespace DynamicMenu.Web.Extensions
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Routing;
 
-    /// <summary>
-    /// Contains extension methods for <see cref="IHtmlHelper" />.
-    /// </summary>
+    /// <summary> Contains extension methods for <see cref="IHtmlHelper" />. </summary>
     public static class HtmlHelperViewExtensions
     {
-        /// <summary>
-        /// Performs controller's action in razor html view.
-        /// </summary>
-        /// <param name="helper">The helper.</param>
-        /// <param name="action">The action.</param>
-        /// <param name="controller">The controller.</param>
-        /// <returns>
-        /// A <see cref="IHtmlContent"/>.
-        /// </returns>
+        /// <summary> Performs controller's action in razor html view. </summary>
+        /// <param name="helper"> The helper. </param>
+        /// <param name="action"> The action. </param>
+        /// <param name="controller"> The controller. </param>
+        /// <returns> A <see cref="IHtmlContent" />. </returns>
         public static IHtmlContent RenderAction([NotNull] this IHtmlHelper helper, [NotNull] string action, [NotNull] string controller)
         {
             if (helper == null)
@@ -43,24 +37,20 @@ namespace DynamicMenu.Web.Extensions
 
             if (controller == null)
                 throw new ArgumentNullException(nameof(controller));
-            
-           var area = (string) helper.ViewContext?.RouteData?.Values?["area"];
+
+            var area = (string) helper.ViewContext?.RouteData?.Values?["area"];
 
             var task = RenderActionAsync(helper, action, controller, area);
 
             return task.Result;
         }
 
-        /// <summary>
-        /// Performs controller's action in razor html view asynchronously.
-        /// </summary>
-        /// <param name="helper">The helper.</param>
-        /// <param name="action">The action.</param>
-        /// <param name="controller">The controller.</param>
-        /// <param name="area">The area.</param>
-        /// <returns>
-        /// An awaitable <see cref="IHtmlContent"/>.
-        /// </returns>
+        /// <summary> Performs controller's action in razor html view asynchronously. </summary>
+        /// <param name="helper"> The helper. </param>
+        /// <param name="action"> The action. </param>
+        /// <param name="controller"> The controller. </param>
+        /// <param name="area"> The area. </param>
+        /// <returns> An awaitable <see cref="IHtmlContent" />. </returns>
         static async Task<IHtmlContent> RenderActionAsync(this IHtmlHelper helper, string action, string controller, string area)
         {
             // fetching required services for invocation
@@ -106,14 +96,10 @@ namespace DynamicMenu.Web.Extensions
             return new HtmlString(content);
         }
 
-        /// <summary>
-        /// Gets the desired service from http context.
-        /// </summary>
-        /// <typeparam name="TService">The type of the service.</typeparam>
-        /// <param name="httpContext">The HTTP context.</param>
-        /// <returns>
-        /// A <see cref="TService"/>.
-        /// </returns>
+        /// <summary> Gets the desired service from http context. </summary>
+        /// <typeparam name="TService"> The type of the service. </typeparam>
+        /// <param name="httpContext"> The HTTP context. </param>
+        /// <returns> A <see cref="TService" />. </returns>
         static TService GetServiceOrFail<TService>(HttpContext httpContext)
         {
             if (httpContext == null)

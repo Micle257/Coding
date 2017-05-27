@@ -19,10 +19,4 @@
     <ProjectReference Include="..\DynamicMenu.Core\DynamicMenu.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

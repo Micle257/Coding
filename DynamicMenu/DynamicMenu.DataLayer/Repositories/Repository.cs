@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Infrastructure.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace DynamicMenu.DataLayer
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Represents a base class for <see cref="IRepository{T}" />. </summary>
-    /// <typeparam name="T">The type of the entity. </typeparam>
+    /// <typeparam name="T"> The type of the entity. </typeparam>
     public abstract class Repository<T> : IRepository<T>
         where T : BaseEntity
     {
@@ -76,22 +76,19 @@ namespace DynamicMenu.DataLayer
             Context.SaveChanges();
         }
 
-        /// <summary>
-        /// Releases managed resources.
-        /// </summary>
-        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing) {
-                Context?.Dispose();
-            }
-        }
-
         /// <inheritdoc />
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary> Releases managed resources. </summary>
+        /// <param name="disposing"> <c> true </c> to release both managed and unmanaged resources; <c> false </c> to release only unmanaged resources. </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+                Context?.Dispose();
         }
     }
 }

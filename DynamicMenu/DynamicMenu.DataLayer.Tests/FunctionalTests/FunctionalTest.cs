@@ -6,6 +6,7 @@
 
 namespace DynamicMenu.DataLayer.Tests.FunctionalTests
 {
+    using Infrastructure;
     using Microsoft.EntityFrameworkCore;
 
     public class FunctionalTest

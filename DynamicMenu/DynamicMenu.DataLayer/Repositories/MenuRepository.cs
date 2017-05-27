@@ -4,11 +4,9 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Infrastructure.Repositories
 {
-    using System;
     using System.Collections.Generic;
-    using Core;
     using Core.Models;
     using Extensions;
     using JetBrains.Annotations;

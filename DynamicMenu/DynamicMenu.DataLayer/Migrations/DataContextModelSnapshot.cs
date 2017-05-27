@@ -1,55 +1,60 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using DynamicMenu.DataLayer;
-using DynamicMenu.Core;
+﻿// -----------------------------------------------------------------------
+//  <copyright file="DataContextModelSnapshot.cs">
+//   Copyright (c) Michal Pokorný. All Rights Reserved.
+//  </copyright>
+// -----------------------------------------------------------------------
 
 namespace DynamicMenu.Infrastructure.Migrations
 {
+    using System;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Infrastructure;
+    using Microsoft.EntityFrameworkCore.Metadata;
+
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    class DataContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.2")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    .HasAnnotation("ProductVersion", "1.1.2")
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DynamicMenu.Core.Models.Menu", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+            modelBuilder.Entity("DynamicMenu.Core.Models.Menu",
+                                b =>
+                                {
+                                    b.Property<int>("Id")
+                                     .ValueGeneratedOnAdd();
 
-                    b.Property<DateTimeOffset>("CreatedAt");
+                                    b.Property<DateTimeOffset>("CreatedAt");
 
-                    b.Property<string>("DisplayName");
+                                    b.Property<string>("DisplayName");
 
-                    b.Property<bool>("IsEnabled");
+                                    b.Property<bool>("IsEnabled");
 
-                    b.Property<DateTimeOffset>("LastUpdatedAt");
+                                    b.Property<DateTimeOffset>("LastUpdatedAt");
 
-                    b.Property<int>("MenuHierarchyLevel");
+                                    b.Property<int>("MenuHierarchyLevel");
 
-                    b.Property<int?>("ParentMenuId");
+                                    b.Property<int?>("ParentMenuId");
 
-                    b.Property<string>("Slug")
-                        .IsRequired();
+                                    b.Property<string>("Slug")
+                                     .IsRequired();
 
-                    b.HasKey("Id");
+                                    b.HasKey("Id");
 
-                    b.HasIndex("ParentMenuId");
+                                    b.HasIndex("ParentMenuId");
 
-                    b.ToTable("Menus");
-                });
+                                    b.ToTable("Menus");
+                                });
 
-            modelBuilder.Entity("DynamicMenu.Core.Models.Menu", b =>
-                {
-                    b.HasOne("DynamicMenu.Core.Models.Menu", "ParentMenu")
-                        .WithMany()
-                        .HasForeignKey("ParentMenuId");
-                });
+            modelBuilder.Entity("DynamicMenu.Core.Models.Menu",
+                                b =>
+                                {
+                                    b.HasOne("DynamicMenu.Core.Models.Menu", "ParentMenu")
+                                     .WithMany()
+                                     .HasForeignKey("ParentMenuId");
+                                });
         }
     }
 }

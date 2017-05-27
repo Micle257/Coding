@@ -6,10 +6,8 @@
 
 namespace DynamicMenu.Core.Models
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     /// <summary> Represents a entity for dynamic menu. </summary>
     public class Menu : BaseEntity

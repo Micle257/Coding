@@ -14,42 +14,37 @@ textarea { max-width: 280px; }
 
 .dropdown-menu .sub-menu {
     left: 100%;
+    margin-top: -1px;
     position: absolute;
     top: 0;
     visibility: hidden;
-    margin-top: -1px;
 }
 
 @media (min-width: 979px) {
-
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-
+    .dropdown:hover .dropdown-menu { display: block; }
 }
 
-.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
-    margin-top: 0;
-}
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu { margin-top: 0; }
 
 @media (min-width: 979px) {
     .rightMenu {
-        position: absolute;
         float: right;
-        top: 0;
         left: 100%;
         padding: 10px;
+        position: absolute;
+        top: 0;
     }
 
     .right-caret {
         border-bottom: 4px solid transparent;
-        border-top: 4px solid transparent;
         border-left: 4px solid #000000;
+        border-top: 4px solid transparent;
         display: inline-block;
         height: 0;
+        margin-left: 5px;
+        -ms-opacity: 1;
         opacity: 1;
         vertical-align: center;
         width: 0;
-        margin-left: 5px;
     }
 }

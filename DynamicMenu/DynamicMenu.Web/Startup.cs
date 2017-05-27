@@ -7,7 +7,7 @@
 namespace DynamicMenu.Web
 {
     using System;
-    using DataLayer;
+    using Infrastructure;
     using JetBrains.Annotations;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -16,15 +16,11 @@ namespace DynamicMenu.Web
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
-    /// <summary>
-    /// Specifies and configures the application's environment.
-    /// </summary>
+    /// <summary> Specifies and configures the application's environment. </summary>
     public class Startup
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Startup"/> class.
-        /// </summary>
-        /// <param name="env">The hosting.</param>
+        /// <summary> Initializes a new instance of the <see cref="Startup" /> class. </summary>
+        /// <param name="env"> The hosting. </param>
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -35,19 +31,13 @@ namespace DynamicMenu.Web
             Configuration = builder.Build();
         }
 
-        /// <summary>
-        /// Gets the configuration root.
-        /// </summary>
-        /// <value>
-        /// The <see cref="IConfigurationRoot"/>.
-        /// </value>
+        /// <summary> Gets the configuration root. </summary>
+        /// <value> The <see cref="IConfigurationRoot" />. </value>
         [NotNull]
         public IConfigurationRoot Configuration { get; }
-        
-        /// <summary>
-        /// Invoked by CLR, use this to add services to the container.
-        /// </summary>
-        /// <param name="services">The services.</param>
+
+        /// <summary> Invoked by CLR, use this to add services to the container. </summary>
+        /// <param name="services"> The services. </param>
         public void ConfigureServices([NotNull] IServiceCollection services)
         {
             // Add framework services.
@@ -59,13 +49,11 @@ namespace DynamicMenu.Web
 
             services.AddDbContext<DataContext>(options => options?.UseSqlServer(connectionString));
         }
-        
-        /// <summary>
-        /// Invoked by CLR, this to configure the HTTP request pipeline.
-        /// </summary>
-        /// <param name="app">The application builder.</param>
-        /// <param name="env">The hosting.</param>
-        /// <param name="loggerFactory">The logger factory.</param>
+
+        /// <summary> Invoked by CLR, this to configure the HTTP request pipeline. </summary>
+        /// <param name="app"> The application builder. </param>
+        /// <param name="env"> The hosting. </param>
+        /// <param name="loggerFactory"> The logger factory. </param>
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

@@ -4,7 +4,7 @@
 //  </copyright>
 // -----------------------------------------------------------------------
 
-namespace DynamicMenu.DataLayer
+namespace DynamicMenu.Infrastructure
 {
     using System;
     using System.Linq;
@@ -21,7 +21,7 @@ namespace DynamicMenu.DataLayer
         public DataContext(DbContextOptions contextOptions) : base(contextOptions) { }
 
         /// <summary> Gets or sets the menu database table. </summary>
-        /// <value> The <see cref="DbSet{T}" /> of the <see cref="Menu"/> entities. </value>
+        /// <value> The <see cref="DbSet{T}" /> of the <see cref="Menu" /> entities. </value>
         public DbSet<Menu> Menus { get; set; }
 
         /// <inheritdoc />
