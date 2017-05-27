@@ -11,7 +11,7 @@ namespace DynamicMenu.Core.Interfaces
     using System.Linq.Expressions;
     using Models;
 
-    /// <summary> Represents the CRUD operation provider, which won't commit to the context. </summary>
+    /// <summary> Represents the CRUD operation provide. </summary>
     /// <typeparam name="T"> The type of the entity. </typeparam>
     public interface IRepository<T> : IDisposable
         where T : BaseEntity

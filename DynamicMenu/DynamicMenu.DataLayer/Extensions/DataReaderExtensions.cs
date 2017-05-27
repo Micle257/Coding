@@ -14,6 +14,14 @@ namespace DynamicMenu.DataLayer.Extensions
     /// <summary> Contains extension methods for <see cref="IDataReader" />. </summary>
     public static class DataReaderExtensions
     {
+        /// <summary>
+        /// Maps the data from reader to the model.
+        /// </summary>
+        /// <typeparam name="T">The type of the model.</typeparam>
+        /// <param name="reader">The reader.</param>
+        /// <returns>
+        /// A <see cref="IList{T}"/>.
+        /// </returns>
         internal static IList<T> MapModel<T>(this IDataReader reader)
             where T : new()
         {
@@ -36,6 +44,14 @@ namespace DynamicMenu.DataLayer.Extensions
             return result;
         }
 
+        /// <summary>
+        /// Gets the columns.
+        /// </summary>
+        /// <typeparam name="T">The type of the model.</typeparam>
+        /// <param name="reader">The reader.</param>
+        /// <returns>
+        /// A <see cref="IDictionary{TKey,TValue}"/>
+        /// </returns>
         static IDictionary<string, PropertyInfo> GetColumns<T>(this IDataReader reader)
         {
             var result = new Dictionary<string, PropertyInfo>();

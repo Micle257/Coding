@@ -21,7 +21,7 @@ namespace DynamicMenu.DataLayer
         public DataContext(DbContextOptions<DataContext> contextOptions) : base(contextOptions) { }
 
         /// <summary> Gets or sets the menu database table. </summary>
-        /// <value> The <see cref="DbSet{Menu}" />. </value>
+        /// <value> The <see cref="DbSet{T}" /> of the <see cref="Menu"/> entities. </value>
         public DbSet<Menu> Menus { get; set; }
 
         /// <inheritdoc />
@@ -38,7 +38,7 @@ namespace DynamicMenu.DataLayer
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        /// <summary> Updates timestamps values in changed entities. </summary>
+        /// <summary> Updates timestamps values on changed entities. </summary>
         void ApplyUpdate()
         {
             var entries = ChangeTracker?.Entries()
