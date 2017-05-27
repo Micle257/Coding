@@ -232,8 +232,8 @@
       <Project>{2c0bc1c9-8df8-434e-a47c-d60ca36103ab}</Project>
       <Name>DynamicMenu.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DynamicMenu.DataLayer\DynamicMenu.Infrastructure.csproj">
-      <Project>{bd8694a3-c228-40b5-b132-99504ed8da6c}</Project>
+    <ProjectReference Include="..\DynamicMenu.Infrastructure\DynamicMenu.Infrastructure.csproj">
+      <Project>{fc8883e2-729e-4067-bfaf-e233197f1a19}</Project>
       <Name>DynamicMenu.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
