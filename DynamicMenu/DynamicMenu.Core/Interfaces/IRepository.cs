@@ -9,6 +9,7 @@ namespace DynamicMenu.Core.Interfaces
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
+    using JetBrains.Annotations;
     using Models;
 
     /// <summary> Represents the CRUD operation provide. </summary>
@@ -18,15 +19,15 @@ namespace DynamicMenu.Core.Interfaces
     {
         /// <summary> Marks specified entity, that it should be inserted into the db context. </summary>
         /// <param name="entity"> The entity. </param>
-        void Add(T entity);
+        void Add([NotNull] T entity);
 
         /// <summary> Marks specified entity, that it should be updated into the db context. </summary>
         /// <param name="entity"> The entity. </param>
-        void Update(T entity);
+        void Update([NotNull] T entity);
 
         /// <summary> Marks specified entity, that it should be deleted into the db context. </summary>
         /// <param name="entity"> The entity. </param>
-        void Remove(T entity);
+        void Remove([NotNull] T entity);
 
         /// <summary> Marks specified entity, that it should be inserted into the db context. </summary>
         /// <param name="entitySelector"> The entity selector. </param>

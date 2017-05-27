@@ -46,8 +46,7 @@ namespace DynamicMenu.DataLayer.Extensions
             cmd.CommandText = spName;
             cmd.CommandType = CommandType.StoredProcedure;
 
-            context
-                    .Database.OpenConnection();
+            context.Database.OpenConnection();
             return cmd;
         }
     }

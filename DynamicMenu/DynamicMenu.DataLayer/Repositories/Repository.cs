@@ -16,7 +16,7 @@ namespace DynamicMenu.DataLayer
     using Microsoft.EntityFrameworkCore;
 
     /// <summary> Represents a base class for <see cref="IRepository{T}" />. </summary>
-    /// <typeparam name="T"> </typeparam>
+    /// <typeparam name="T">The type of the entity. </typeparam>
     public abstract class Repository<T> : IRepository<T>
         where T : BaseEntity
     {

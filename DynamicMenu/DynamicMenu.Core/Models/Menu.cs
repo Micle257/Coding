@@ -40,19 +40,5 @@ namespace DynamicMenu.Core.Models
         /// <summary> Gets or sets the menu's hierarchy level. </summary>
         /// <value> The <see cref="MenuHierarchyLevel" />. </value>
         public MenuHierarchyLevel MenuHierarchyLevel { get; set; }
-
-        /// <summary> Generates the slug from display name. </summary>
-        /// <exception cref="ArgumentNullException"> DisplayName - Name of the menu is not valid (argument is null or whitespace). </exception>
-        /// <exception cref="FormatException"> The display name must contain only letters, digits, spaces or punctuations </exception>
-        public void GenerateSlug()
-        {
-            if (string.IsNullOrWhiteSpace(DisplayName))
-                throw new ArgumentNullException(nameof(DisplayName), "Name of the menu is not valid (argument is null or whitespace).");
-
-            if (!DisplayName.ToCharArray().All(c => char.IsLetterOrDigit(c) || char.IsWhiteSpace(c) || char.IsPunctuation(c)))
-                throw new FormatException("The display name must contain only letters, digits, spaces or punctuations");
-
-            Slug = DisplayName.Replace(' ', '-')?.ToLowerInvariant();
-        }
     }
 }

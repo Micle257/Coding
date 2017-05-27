@@ -18,7 +18,7 @@ namespace DynamicMenu.DataLayer
     {
         /// <summary> Initializes a new instance of the <see cref="DataContext" /> class with context options. </summary>
         /// <param name="contextOptions"> The context options. </param>
-        public DataContext(DbContextOptions<DataContext> contextOptions) : base(contextOptions) { }
+        public DataContext(DbContextOptions contextOptions) : base(contextOptions) { }
 
         /// <summary> Gets or sets the menu database table. </summary>
         /// <value> The <see cref="DbSet{T}" /> of the <see cref="Menu"/> entities. </value>

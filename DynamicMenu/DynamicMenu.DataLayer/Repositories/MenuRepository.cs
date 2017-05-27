@@ -20,34 +20,6 @@ namespace DynamicMenu.DataLayer
         /// <param name="context"> The context. </param>
         public MenuRepository([NotNull] DataContext context) : base(context) { }
 
-        /// <summary> Adds the menu entity to the data context. </summary>
-        /// <param name="name"> The name of menu. </param>
-        /// <param name="hierarchyLevel"> The hierarchy level. </param>
-        /// <param name="parent"> The parent. </param>
-        /// <param name="isEnabled"> If set to <c> true </c> menu is enabled. </param>
-        /// <returns> A newly instantiated <see cref="Menu" />. </returns>
-        /// <exception cref="ArgumentNullException"> name - Name of a menu is not valid (argument is null or whitespace). </exception>
-        /// <exception cref="ArgumentException"> Menu with no parent menu must be in root category </exception>
-        public void AddMenu([NotNull] string name, MenuHierarchyLevel hierarchyLevel, Menu parent, bool isEnabled = true)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException(nameof(name), "Name of a menu is not valid (argument is null or whitespace).");
-
-            if (parent != null && hierarchyLevel != MenuHierarchyLevel.Root)
-                throw new ArgumentException("Menu with no parent menu must be in root category");
-
-            var menu = new Menu
-                       {
-                           DisplayName = name,
-                           IsEnabled = isEnabled,
-                           ParentMenu = parent,
-                           MenuHierarchyLevel = hierarchyLevel
-                       };
-            menu.GenerateSlug();
-
-            Context.Menus.Add(menu);
-        }
-
         /// <summary> Gets the menus from the data context through Stored Procedure. </summary>
         /// <returns> An <see cref="IList{T}" />. </returns>
         public IList<Menu> GetMenus()
