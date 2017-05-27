@@ -11,6 +11,7 @@ namespace DynamicMenu.DataLayer.Tests.UnitTests
     using Core.Models;
     using Infrastructure.Repositories;
     using Moq;
+    using Xunit;
 
     public class MenuRepositoryTests
     {

@@ -12,6 +12,15 @@ input,
 select,
 textarea { max-width: 280px; }
 
+.root-category {
+    cursor: pointer;
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.3;
+}
+
 .dropdown-menu .sub-menu {
     left: 100%;
     margin-top: -1px;
@@ -26,13 +35,17 @@ textarea { max-width: 280px; }
 
 .nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu { margin-top: 0; }
 
+.rightMenu {
+    padding: 10px;
+    position: absolute;
+}
+
 @media (min-width: 979px) {
     .rightMenu {
-        float: right;
-        left: 100%;
-        padding: 10px;
-        position: absolute;
+        float: right; 
         top: 0;
+        left: 100%;
+
     }
 
     .right-caret {
@@ -40,11 +53,11 @@ textarea { max-width: 280px; }
         border-left: 4px solid #000000;
         border-top: 4px solid transparent;
         display: inline-block;
-        height: 0;
         margin-left: 5px;
-        -ms-opacity: 1;
         opacity: 1;
-        vertical-align: center;
-        width: 0;
     }
+}
+
+@media (min-width: 769px) {
+    
 }
